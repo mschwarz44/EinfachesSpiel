@@ -1,3 +1,8 @@
+/**
+ * Model der Spiellogik für das Gewinnspiel.
+ * Verwaltet Punktestand Spielerzahl und Computerzahl sowie das Rundenergebnis
+ * und stellt die Berechnungslogik gemäß den Spielregeln bereit.
+ */
 public class GewinnModel {
     int gesamtPunkte;
     int spielerZahl;
@@ -9,14 +14,21 @@ public class GewinnModel {
         computerZahl = 0;
         rundenErgebnis = 0;
     }
+    /**
+     * Ermittelt eine zufällige Computerzahl im Bereich 1–9.
+     */
     public void berechneComputerZahl() {
         computerZahl = (int) (Math.random() * 9) + 1;
     }
+    /**
+     * Berechnet Rundenergebnis und Gesamtpunktestand anhand der Spielerzahl
+     * im Vergleich zur zufällig ermittelten Computerzahl.
+     */
     public void berechneGesamtPunkte(int spielerZahl) {
         berechneComputerZahl();
-        int differenz = spielerZahl - gesamtPunkte;
+        int differenz = spielerZahl - computerZahl;
         if(differenz == 0) {
-            rundenErgebnis = 5;
+            rundenErgebnis = 20;
         }else if(differenz == 1 || differenz == -1) {
             rundenErgebnis = 5;
         } else {
@@ -33,9 +45,9 @@ public class GewinnModel {
         return rundenErgebnis;
     }
     public boolean hatGewonnen() {
-        return false;
+        return gesamtPunkte >= 0;
     }
     public boolean hatVerloren() {
-        return false;
+        return computerZahl <= 0;
     }
 }
