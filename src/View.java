@@ -53,4 +53,28 @@ public class View extends JFrame {
 
         setVisible(true);
     }
+
+    public void addEingabeListener(ActionListener listener) {
+        textSpielerZahl.addActionListener(listener);
+    }
+    public void addNochEinmalListener(ActionListener listener) {
+        btnNochEinmal.addActionListener(listener);
+    }
+    public String getSpielerEingabe() {
+        return textSpielerZahl.getText();
+    }
+    public void setComputerZahl(int Zahl) {
+        textComputerZahl.setText(String.valueOf(Zahl));
+    }
+    public void setRundenErgebnis(int zahl) {
+        labelRundenErgebnis.setText(String.valueOf(zahl));
+    }
+    public void setGesamtpunkte(int zahl) {
+        labelGesamtPunkte.setText(String.valueOf(zahl));
+    }
+    public void resetRund() {
+        textSpielerZahl.setText("");
+        textComputerZahl.setText("");
+        labelRundenErgebnis.setText("Tippe eine Zahl von 1 bis 9");
+    }
 }
