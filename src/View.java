@@ -18,15 +18,22 @@ public class View extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        Font fettFont = new Font("SansSerif", Font.BOLD, 14);
+        Font grossFont = new Font("SansSerif", Font.BOLD, 28);
+
         //Oberer Leiste
-        JPanel topPanel = new JPanel(new GridLayout(2, 2));
-        topPanel.add(new JLabel("RundenErgebnis:", SwingConstants.CENTER));
+        JPanel topPanel = new JPanel(new GridLayout(2, 2, 10, 0));
+        topPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 5));
+        topPanel.add(new JLabel("Rundenergebnis:", SwingConstants.CENTER));
         topPanel.add(new JLabel("Gesamtpunkte:", SwingConstants.CENTER));
 
         labelRundenErgebnis = new JLabel("Tippe eine Zahl von 1 bis 9", SwingConstants.CENTER);
         labelGesamtPunkte =  new JLabel("Gesamtpunkte: 30", SwingConstants.CENTER);
+        labelRundenErgebnis.setFont(fettFont);
+        labelGesamtPunkte.setFont(fettFont);
         labelRundenErgebnis.setOpaque(true);
         labelGesamtPunkte.setOpaque(true);
+        labelRundenErgebnis.setBackground(Color.WHITE);
         labelGesamtPunkte.setBackground(Color.WHITE);
 
         topPanel.add(labelRundenErgebnis);
@@ -34,22 +41,35 @@ public class View extends JFrame {
         add(topPanel, BorderLayout.NORTH);
 
         //Mittler Bereich
-        JPanel centerPanel = new JPanel(new GridLayout(2, 2));
-        centerPanel.add(new JLabel("Deine Zahl:", SwingConstants.CENTER));
-        centerPanel.add(new JLabel("Computer:", SwingConstants.CENTER));
+        JPanel centerPanel = new JPanel(new BorderLayout());
+        centerPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        JPanel beschriftungPanel = new JPanel(new GridLayout(1, 2, 10, 0));
+        beschriftungPanel.add(new JLabel("Deine Zahl:", SwingConstants.CENTER));
+        beschriftungPanel.add(new JLabel("Computer:", SwingConstants.CENTER));
 
         textSpielerZahl = new JTextField();
         textComputerZahl = new JTextField();
         textComputerZahl.setEditable(false);
+        textComputerZahl.setBackground(Color.WHITE);
+        textSpielerZahl.setFont(grossFont);
+        textComputerZahl.setFont(grossFont);
+        textSpielerZahl.setHorizontalAlignment(JTextField.CENTER);
+        textComputerZahl.setHorizontalAlignment(JTextField.CENTER);
 
+        JPanel feldPanel = new JPanel(new GridLayout(1, 2, 10, 0));
+        feldPanel.add(textSpielerZahl);
+        feldPanel.add(textComputerZahl);
 
-        centerPanel.add(textSpielerZahl);
-        centerPanel.add(textComputerZahl);
+        centerPanel.add(beschriftungPanel, BorderLayout.NORTH);
+        centerPanel.add(feldPanel, BorderLayout.CENTER);
         add(centerPanel, BorderLayout.CENTER);
 
         //Unter Leiste
         btnNochEinmal = new JButton("Noch einmal!");
-        add(btnNochEinmal, BorderLayout.SOUTH);
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        bottomPanel.add(btnNochEinmal);
+        add(bottomPanel, BorderLayout.SOUTH);
 
         setVisible(true);
     }
@@ -67,7 +87,7 @@ public class View extends JFrame {
         textComputerZahl.setText(String.valueOf(Zahl));
     }
     public void setRundenErgebnis(int zahl) {
-        labelRundenErgebnis.setText(String.valueOf(zahl));
+        labelRundenErgebnis.setText(zahl > 0 ? "+" + zahl : String.valueOf(zahl));
     }
     public void setGesamtpunkte(int zahl) {
         labelGesamtPunkte.setText(String.valueOf(zahl));

@@ -4,12 +4,12 @@
  * und stellt die Berechnungslogik gemäß den Spielregeln bereit.
  */
 public class GewinnModel {
-    int gesamtPunkte;
+    int gesamtPunkte ;
     int spielerZahl;
     int computerZahl;
     int rundenErgebnis;
     GewinnModel() {
-        gesamtPunkte = 0;
+        gesamtPunkte = 30;
         spielerZahl = 0;
         computerZahl = 0;
         rundenErgebnis = 0;
@@ -34,6 +34,7 @@ public class GewinnModel {
         } else {
             rundenErgebnis = -10;
         }
+        gesamtPunkte += rundenErgebnis;
     }
     public int getGesamtPunkte() {
         return gesamtPunkte;
