@@ -14,7 +14,7 @@ public class GewinnModel {
         computerZahl = 0;
         rundenErgebnis = 0;
     }
-    /**ab
+    /**
      * Ermittelt eine zufällige Computerzahl im Bereich 1–9.
      */
     public void berechneComputerZahl() {
