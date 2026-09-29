@@ -69,6 +69,7 @@ public class View extends JFrame {
         btnNochEinmal = new JButton("Noch einmal!");
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         bottomPanel.add(btnNochEinmal);
+        btnNochEinmal.setEnabled(false);
         add(bottomPanel, BorderLayout.SOUTH);
 
         setVisible(true);
@@ -96,5 +97,14 @@ public class View extends JFrame {
         textSpielerZahl.setText("");
         textComputerZahl.setText("");
         labelRundenErgebnis.setText("Tippe eine Zahl von 1 bis 9");
+    }
+    public void setEingabeGesperrt(boolean gesperrt) {
+        textSpielerZahl.setEditable(!gesperrt);
+        if (!gesperrt) {
+            textSpielerZahl.requestFocus();
+        }
+    }
+    public void setNochEinmalAktiv(boolean aktiv) {
+        btnNochEinmal.setEnabled(aktiv);
     }
 }

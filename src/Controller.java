@@ -29,6 +29,8 @@ public class Controller {
     }
     private void nochEinmalEingabe() {
         view.resetRund();
+        view.setEingabeGesperrt(false);
+        view.setNochEinmalAktiv(false);
     }
 
     /**
@@ -68,5 +70,7 @@ public class Controller {
         view.setComputerZahl(gewinnModel.getComputerZahl());
         view.setRundenErgebnis(gewinnModel.getRundenErgebnis());
         view.setGesamtpunkte(gewinnModel.getGesamtPunkte());
+        view.setEingabeGesperrt(true);
+        view.setNochEinmalAktiv(true);
     }
 }
