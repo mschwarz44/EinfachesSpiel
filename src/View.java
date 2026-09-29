@@ -94,6 +94,8 @@ public class View extends JFrame {
         labelGesamtPunkte.setText(String.valueOf(zahl));
     }
     public void resetRund() {
+        setRundenErgebnisFarbe(Color.WHITE);
+        setGesamtpunkteFarbe(Color.WHITE);
         textSpielerZahl.setText("");
         textComputerZahl.setText("");
         labelRundenErgebnis.setText("Tippe eine Zahl von 1 bis 9");
@@ -106,5 +108,11 @@ public class View extends JFrame {
     }
     public void setNochEinmalAktiv(boolean aktiv) {
         btnNochEinmal.setEnabled(aktiv);
+    }
+    public void setRundenErgebnisFarbe(Color farbe) {
+        labelRundenErgebnis.setBackground(farbe);
+    }
+    public void setGesamtpunkteFarbe(Color farbe) {
+        labelGesamtPunkte.setBackground(farbe);
     }
 }
