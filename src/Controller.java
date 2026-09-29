@@ -1,5 +1,4 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 /**
  * Controller verbindet Model (Spiellogik) und View (Swing-GUI).
@@ -68,5 +67,15 @@ public class Controller {
         view.setComputerZahl(gewinnModel.getComputerZahl());
         view.setRundenErgebnis(gewinnModel.getRundenErgebnis());
         view.setGesamtpunkte(gewinnModel.getGesamtPunkte());
+        if (gewinnModel.getRundenErgebnis() < 0) {
+            view.setRundenErgebnisFarbe(Color.RED);
+        } else {
+            view.setRundenErgebnisFarbe(Color.GREEN);
+        }
+        if (gewinnModel.getGesamtPunkte() <= 0) {
+            view.setGesamtpunkteFarbe(Color.RED);
+        } else {
+            view.setGesamtpunkteFarbe(Color.GREEN);
+        }
     }
 }
